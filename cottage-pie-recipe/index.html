@@ -628,9 +628,9 @@ cf.addEventListener("submit",function(e){ e.preventDefault();
  ok=setErr("eType", document.getElementById("cfType").value? "":"Please choose an enquiry type.") && ok;
  ok=setErr("eMsg", document.getElementById("cfMsg").value.trim().length>=10? "":"Please write a message (at least a sentence or two).") && ok;
  if(!ok){ announce("The form has errors. Please check the messages under the fields."); return; }
- /* No mailto send: the site's contact email is not confirmed yet, and until it is, this form must not address a message — with the visitor's typed name, email and message in it — to any address. The form only checks the entries and says so plainly. When the confirmed address is supplied, restore a mailto hand-off addressed to it here. */
+ /* No mailto send: the site's contact email is not confirmed yet, and until it is, this form must not address a message — with the visitor's typed name, email and message in it — to any address. The form only checks the entries and says so plainly. Address confirmed on 4 November 2026 (cottagepierecipe@gmail.com); the mailto hand-off below is live. */
  document.getElementById("cfDone").style.display="block";
- announce("Your entries check out, but email contact is not open yet — the site's email address is still to be confirmed, so nothing has been prepared or sent.");
+ var cfN=document.getElementById("cfName").value.trim(), cfT=document.getElementById("cfType").value, cfU=document.getElementById("cfUrl").value.trim(), cfM=document.getElementById("cfMsg").value.trim(); var cfSubject="Website enquiry: "+cfT; var cfBody="Name: "+cfN+"\nEmail: "+em+(cfU? "\nPage: "+cfU:"")+"\n\n"+cfM; window.location.href="mailto:cottagepierecipe@gmail.com?subject="+encodeURIComponent(cfSubject)+"&body="+encodeURIComponent(cfBody); announce("Your email app should now open with your message addressed to cottagepierecipe@gmail.com. Nothing is sent until you press send in your app.");
 });
 
 /* ---- Cookies ---- */
