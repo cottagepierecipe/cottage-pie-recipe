@@ -359,7 +359,7 @@ function showPage(){ var r=currentRoute(); var pages=document.querySelectorAll("
 }
 document.addEventListener("click",function(e){ var a=e.target.closest("[data-nav]"); if(a){ /* hash links work natively; ensure menu closes */ } });
 window.addEventListener("hashchange",showPage);
-document.getElementById("menuBtn").addEventListener("click",function(){ var n=document.getElementById("mainNav"); var open=n.classList.toggle("open"); this.setAttribute("aria-expanded",open?"true":"false"); });
+var _g_menuBtn=document.getElementById("menuBtn"); if(_g_menuBtn) _g_menuBtn.addEventListener("click",function(){ var n=document.getElementById("mainNav"); var open=n.classList.toggle("open"); this.setAttribute("aria-expanded",open?"true":"false"); });
 /* The Sitemap is a real page (data-page="/sitemap/") handled by the router above. */
 
 /* ---- Reveals ---- */
@@ -388,10 +388,10 @@ document.querySelectorAll(".serve-btn").forEach(function(b){ b.addEventListener(
  document.querySelectorAll("[data-q]").forEach(function(s){ var q=parseFloat(s.getAttribute("data-q"))*n/baseServe; var unit=s.getAttribute("data-unit")||""; var v=(q%1===0)? String(q) : (Math.round(q*10)/10).toString(); s.textContent=v+unit; });
  announce("Ingredient quantities now shown for "+n+" servings. Oven temperature, cooking times and dish size have not changed.");
 }); });
-document.getElementById("printBtn").addEventListener("click",function(){ var on=document.body.classList.toggle("printview"); this.setAttribute("aria-pressed",on?"true":"false"); this.textContent=on?"Exit Recipe-Only View":"Recipe-Only View"; if(on){ document.getElementById("recipe-card").scrollIntoView(); announce("Recipe-only view: only the recipe card is shown, in a clean layout suitable for printing from your browser or device."); } });
+var _g_printBtn=document.getElementById("printBtn"); if(_g_printBtn) _g_printBtn.addEventListener("click",function(){ var on=document.body.classList.toggle("printview"); this.setAttribute("aria-pressed",on?"true":"false"); this.textContent=on?"Exit Recipe-Only View":"Recipe-Only View"; if(on){ document.getElementById("recipe-card").scrollIntoView(); announce("Recipe-only view: only the recipe card is shown, in a clean layout suitable for printing from your browser or device."); } });
 var wakeLock=null;
-document.getElementById("cookModeBtn").addEventListener("click",function(){ var on=document.body.classList.toggle("cooking"); this.setAttribute("aria-pressed",on?"true":"false"); this.textContent=on?"Exit Cooking Mode":"Cooking Mode"; announce(on?"Cooking mode on. Larger text, distractions hidden.":"Cooking mode off."); if(on){ document.getElementById("recipe-card").scrollIntoView(); } });
-document.getElementById("wakeBtn").addEventListener("click",function(){ var btn=this;
+var _g_cookModeBtn=document.getElementById("cookModeBtn"); if(_g_cookModeBtn) _g_cookModeBtn.addEventListener("click",function(){ var on=document.body.classList.toggle("cooking"); this.setAttribute("aria-pressed",on?"true":"false"); this.textContent=on?"Exit Cooking Mode":"Cooking Mode"; announce(on?"Cooking mode on. Larger text, distractions hidden.":"Cooking mode off."); if(on){ document.getElementById("recipe-card").scrollIntoView(); } });
+var _g_wakeBtn=document.getElementById("wakeBtn"); if(_g_wakeBtn) _g_wakeBtn.addEventListener("click",function(){ var btn=this;
  if(!("wakeLock" in navigator)){ announce("Screen wake lock is not supported in this browser."); btn.textContent="Wake Lock Not Supported"; btn.disabled=true; return; }
  if(wakeLock){ wakeLock.release(); wakeLock=null; btn.setAttribute("aria-pressed","false"); btn.textContent="Keep Screen Awake"; return; }
  navigator.wakeLock.request("screen").then(function(w){ wakeLock=w; btn.setAttribute("aria-pressed","true"); btn.textContent="Screen Kept Awake ✓ (tap to release)"; }).catch(function(){ announce("Wake lock could not be enabled."); });
@@ -455,13 +455,13 @@ document.querySelectorAll("[data-timer-panel]").forEach(function(panel){
  var sa=panel.querySelector("[data-stop-alarm]"); if(sa) sa.addEventListener("click",stopAlarm);
 });
 document.querySelectorAll("[data-goto-timer]").forEach(function(b){ b.addEventListener("click",function(){ var d=document.getElementById("dock"); d.classList.add("open"); document.getElementById("dockHead").setAttribute("aria-expanded","true"); document.getElementById("dockChev").textContent="▼ Close"; var el=document.getElementById("homeTimerAnchor"); if(document.querySelector('[data-page="/faqs/"]').classList.contains("active")&&el) el.scrollIntoView({behavior:"smooth"}); }); });
-document.getElementById("headTimerBtn").addEventListener("click",function(){ var d=document.getElementById("dock"); var open=d.classList.toggle("open"); document.getElementById("dockHead").setAttribute("aria-expanded",open?"true":"false"); document.getElementById("dockChev").textContent=open?"▼ Close":"▲ Open"; });
-document.getElementById("dockHead").addEventListener("click",function(){ var d=document.getElementById("dock"); var open=d.classList.toggle("open"); this.setAttribute("aria-expanded",open?"true":"false"); document.getElementById("dockChev").textContent=open?"▼ Close":"▲ Open"; });
+var _g_headTimerBtn=document.getElementById("headTimerBtn"); if(_g_headTimerBtn) _g_headTimerBtn.addEventListener("click",function(){ var d=document.getElementById("dock"); var open=d.classList.toggle("open"); document.getElementById("dockHead").setAttribute("aria-expanded",open?"true":"false"); document.getElementById("dockChev").textContent=open?"▼ Close":"▲ Open"; });
+var _g_dockHead=document.getElementById("dockHead"); if(_g_dockHead) _g_dockHead.addEventListener("click",function(){ var d=document.getElementById("dock"); var open=d.classList.toggle("open"); this.setAttribute("aria-expanded",open?"true":"false"); document.getElementById("dockChev").textContent=open?"▼ Close":"▲ Open"; });
 document.querySelectorAll("[data-step-min]").forEach(function(b){ b.addEventListener("click",function(){ var mins=parseInt(b.getAttribute("data-step-min"),10); timers.push({id:Date.now()+Math.random(), name:"Recipe step ("+mins+" min)", duration:mins*60000, remaining:mins*60000, endAt:Date.now()+mins*60000, status:"running"}); announce("Step timer started for "+mins+" minutes."); renderTimers(); document.getElementById("dock").classList.add("open"); }); });
 
 /* ---- Contact form ---- */
 var cf=document.getElementById("contactForm");
-cf.addEventListener("submit",function(e){ e.preventDefault();
+if(cf) cf.addEventListener("submit",function(e){ e.preventDefault();
  function setErr(id,msg){ document.getElementById(id).textContent=msg; return !msg; }
  var ok=true;
  ok=setErr("eName", document.getElementById("cfName").value.trim()? "":"Please enter your name.") && ok;
@@ -470,7 +470,7 @@ cf.addEventListener("submit",function(e){ e.preventDefault();
  ok=setErr("eMsg", document.getElementById("cfMsg").value.trim().length>=10? "":"Please write a message (at least a sentence or two).") && ok;
  if(!ok){ announce("The form has errors. Please check the messages under the fields."); return; }
  /* No mailto send: the site's contact email is not confirmed yet, and until it is, this form must not address a message — with the visitor's typed name, email and message in it — to any address. The form only checks the entries and says so plainly. Address confirmed on 4 November 2026 (cottagepierecipe@gmail.com); the mailto hand-off below is live. */
- document.getElementById("cfDone").style.display="block";
+ document.getElementById("cfDone").style.display="block"; var cfCp=document.getElementById("cfCopy"); if(cfCp && !cfCp.dataset.ready){ cfCp.dataset.ready="1"; cfCp.addEventListener("click",function(){ var em2=document.getElementById("cfEmail").value.trim(); var txt="Name: "+document.getElementById("cfName").value.trim()+"\nEmail: "+em2+(document.getElementById("cfUrl").value.trim()? "\nPage: "+document.getElementById("cfUrl").value.trim():"")+"\n\n"+document.getElementById("cfMsg").value.trim(); function dn(){ cfCp.textContent="Copied — paste it into your email app."; } if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(dn,function(){ window.prompt("Copy your prepared message:",txt); }); } else { window.prompt("Copy your prepared message:",txt); } }); }
  var cfN=document.getElementById("cfName").value.trim(), cfT=document.getElementById("cfType").value, cfU=document.getElementById("cfUrl").value.trim(), cfM=document.getElementById("cfMsg").value.trim(); var cfSubject="Website enquiry: "+cfT; var cfBody="Name: "+cfN+"\nEmail: "+em+(cfU? "\nPage: "+cfU:"")+"\n\n"+cfM; window.location.href="mailto:cottagepierecipe@gmail.com?subject="+encodeURIComponent(cfSubject)+"&body="+encodeURIComponent(cfBody); announce("Your email app should now open with your message addressed to cottagepierecipe@gmail.com. Nothing is sent until you press send in your app.");
 });
 
@@ -479,8 +479,8 @@ var prefs={}; try{ prefs=JSON.parse(localStorage.getItem("cpr_cookie_prefs")||"{
 var ckA=document.getElementById("ckAnalytics"), ckM=document.getElementById("ckMarketing");
 if(ckA) ckA.checked=!!prefs.analytics; if(ckM) ckM.checked=!!prefs.marketing;
 /* No auto-popup: nothing on this site tracks you, so the preference panel opens only when you ask for it (footer button) and never covers the page's main content or buttons on arrival. */
-document.getElementById("ckAccept").addEventListener("click",function(){ prefs.seen=true; try{localStorage.setItem("cpr_cookie_prefs",JSON.stringify(prefs));}catch(e){} document.getElementById("cookieBar").classList.remove("show"); });
-document.getElementById("footCookieBtn").addEventListener("click",function(){ document.getElementById("cookieBar").classList.add("show"); document.getElementById("ckAccept").focus(); });
+var _g_ckAccept=document.getElementById("ckAccept"); if(_g_ckAccept) _g_ckAccept.addEventListener("click",function(){ prefs.seen=true; try{localStorage.setItem("cpr_cookie_prefs",JSON.stringify(prefs));}catch(e){} document.getElementById("cookieBar").classList.remove("show"); });
+var _g_footCookieBtn=document.getElementById("footCookieBtn"); if(_g_footCookieBtn) _g_footCookieBtn.addEventListener("click",function(){ document.getElementById("cookieBar").classList.add("show"); document.getElementById("ckAccept").focus(); });
 var ckSave=document.getElementById("ckSave"); if(ckSave) ckSave.addEventListener("click",function(){ prefs.analytics=ckA.checked; prefs.marketing=ckM.checked; prefs.seen=true; try{localStorage.setItem("cpr_cookie_prefs",JSON.stringify(prefs));}catch(e){} document.getElementById("ckMsg").textContent="Saved. No analytics or marketing cookies are active on this site, so nothing new has been switched on."; document.getElementById("cookieBar").classList.remove("show"); });
 var ckReset=document.getElementById("ckReset"); if(ckReset) ckReset.addEventListener("click",function(){ localStorage.removeItem("cpr_cookie_prefs"); localStorage.removeItem(LS); timers=[]; renderTimers(); document.getElementById("ckMsg").textContent="Cleared. Timers and preferences stored on this device have been removed."; });
 
