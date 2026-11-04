@@ -235,8 +235,8 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 <div class="wrap narrow"><p class="breadcrumb"><a href="/" data-nav>Home</a> › Contact Us</p>
 <h1>Contact Us</h1>
 <p class="lede">Recipe corrections, questions about a page, and general feedback about the website are all welcome.</p>
-<p>Email: <span class="placeholder">[Email address — to be added when email contact opens]</span></p>
-<div class="notice"><strong>About this form:</strong> the website has no mail server of its own, and its contact email address is still to be confirmed, so this form cannot send or prepare a message yet. It checks your entries and tells you plainly that email contact is not open; <strong>nothing you type here is sent or stored anywhere</strong>. Once the address is confirmed, the form will prepare a ready-addressed email in your own email app.</div>
+<p>Email: <a href="mailto:cottagepierecipe@gmail.com">cottagepierecipe@gmail.com</a></p>
+<div class="notice"><strong>About this form:</strong> the website has no mail server of its own, so this form does not send anything itself. When you submit it, the form prepares a ready-addressed email in your own email app, addressed to cottagepierecipe@gmail.com; <strong>nothing is sent until you press send in that app, and nothing you type here is stored by this website</strong>.</div>
 <form id="contactForm" novalidate>
 <label class="fl" for="cfName">Your name *</label><input type="text" id="cfName" autocomplete="name"><p class="err" id="eName" role="alert"></p>
 <label class="fl" for="cfEmail">Your email *</label><input type="email" id="cfEmail" autocomplete="email"><p class="err" id="eEmail" role="alert"></p>
@@ -244,14 +244,14 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 <select id="cfType"><option value="">Please choose…</option><option>Recipe correction</option><option>Question about a recipe</option><option>Website feedback</option><option>Timer or printing problem</option><option>Other</option></select><p class="err" id="eType" role="alert"></p>
 <label class="fl" for="cfUrl">Recipe or page address (optional)</label><input type="url" id="cfUrl" placeholder="https://cottagepierecipe.uk/cottage-pie-recipe/">
 <label class="fl" for="cfMsg">Message *</label><textarea id="cfMsg"></textarea><p class="err" id="eMsg" role="alert"></p>
-<p class="help">Privacy: this page stores nothing you type here, and nothing is sent. See the <a href="/privacy-policy/" data-nav>Privacy Policy</a>.</p>
-<button class="btn btn-primary" type="submit">Check my entries</button>
-<p id="cfDone" style="display:none;font-weight:700;margin-top:14px">Thank you — your entries check out. Email contact is not open yet, because the site's email address is still to be confirmed, so nothing has been prepared or sent. The address will appear at the top of this page as soon as it is ready.</p>
+<p class="help">Privacy: this page stores nothing you type here. The form opens your email app with the message prepared; nothing is sent until you press send there. See the <a href="/privacy-policy/" data-nav>Privacy Policy</a>.</p>
+<button class="btn btn-primary" type="submit">Prepare my email</button>
+<p id="cfDone" style="display:none;font-weight:700;margin-top:14px">Thank you — your email app should now open with your message addressed to cottagepierecipe@gmail.com. Nothing has been sent yet: check it in your app and press send there. If no app opened, you can email us directly at cottagepierecipe@gmail.com.</p>
 </form>
 <h2>Questions about contacting us</h2>
-<div class="faq-item"><button aria-expanded="false">What happens when I use this form?<span class="chev">+</span></button><div class="ans"><p>For now, the form only checks what you have typed and confirms that the entries are complete. The site's email address is still to be confirmed, so the form does not prepare or send a message yet. Once the address is confirmed, the form will open your own email app with the message written and addressed — and even then, nothing is sent until you press send in that app.</p></div></div>
+<div class="faq-item"><button aria-expanded="false">What happens when I use this form?<span class="chev">+</span></button><div class="ans"><p>The form checks what you have typed, then opens your own email app with the message written and addressed to cottagepierecipe@gmail.com. Nothing is sent until you press send in that app, and the website itself stores nothing you type.</p></div></div>
 <div class="faq-item"><button aria-expanded="false">What should I include in a recipe correction?<span class="chev">+</span></button><div class="ans"><p>The address of the page, what the page says, and what happened when you followed it — for example, the quantity that looked wrong, or the stage where the result differed. Choose “Recipe correction” as the enquiry type. Confirmed corrections are made to the page, and safety-related ones take priority.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Is anything I type into this form stored by the website?<span class="chev">+</span></button><div class="ans"><p>No. This page stores nothing you type here, and at the moment it sends nothing either. When email contact opens, the message will be created in your own email app and sent from your own email account, like any other email.</p></div></div>
+<div class="faq-item"><button aria-expanded="false">Is anything I type into this form stored by the website?<span class="chev">+</span></button><div class="ans"><p>No. This page stores nothing you type here. The message is created in your own email app and sent from your own email account, like any other email.</p></div></div>
 <div class="faq-item"><button aria-expanded="false">Can I write about something other than a recipe?<span class="chev">+</span></button><div class="ans"><p>Yes. The form covers website feedback and timer or printing problems as well as recipe questions, and there is an “Other” option for anything else. The site's subject is cottage pie, so messages about the dish and its variations are the ones it can act on most directly.</p></div></div>
 <p>More questions are answered on our <a href="/faqs/" data-nav>FAQs page</a>.</p>
 </div></section>
@@ -461,9 +461,9 @@ cf.addEventListener("submit",function(e){ e.preventDefault();
  ok=setErr("eType", document.getElementById("cfType").value? "":"Please choose an enquiry type.") && ok;
  ok=setErr("eMsg", document.getElementById("cfMsg").value.trim().length>=10? "":"Please write a message (at least a sentence or two).") && ok;
  if(!ok){ announce("The form has errors. Please check the messages under the fields."); return; }
- /* No mailto send: the site's contact email is not confirmed yet, and until it is, this form must not address a message — with the visitor's typed name, email and message in it — to any address. The form only checks the entries and says so plainly. When the confirmed address is supplied, restore a mailto hand-off addressed to it here. */
+ /* No mailto send: the site's contact email is not confirmed yet, and until it is, this form must not address a message — with the visitor's typed name, email and message in it — to any address. The form only checks the entries and says so plainly. Address confirmed on 4 November 2026 (cottagepierecipe@gmail.com); the mailto hand-off below is live. */
  document.getElementById("cfDone").style.display="block";
- announce("Your entries check out, but email contact is not open yet — the site's email address is still to be confirmed, so nothing has been prepared or sent.");
+ var cfN=document.getElementById("cfName").value.trim(), cfT=document.getElementById("cfType").value, cfU=document.getElementById("cfUrl").value.trim(), cfM=document.getElementById("cfMsg").value.trim(); var cfSubject="Website enquiry: "+cfT; var cfBody="Name: "+cfN+"\nEmail: "+em+(cfU? "\nPage: "+cfU:"")+"\n\n"+cfM; window.location.href="mailto:cottagepierecipe@gmail.com?subject="+encodeURIComponent(cfSubject)+"&body="+encodeURIComponent(cfBody); announce("Your email app should now open with your message addressed to cottagepierecipe@gmail.com. Nothing is sent until you press send in your app.");
 });
 
 /* ---- Cookies ---- */
