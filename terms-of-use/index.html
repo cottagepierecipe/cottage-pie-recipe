@@ -193,7 +193,7 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 @media print{ header.site,footer.site,.dock,.cookiebar,.no-print,.hero-actions{display:none!important} .page{display:none!important} .page.active{display:block!important} body{background:#fff;font-size:12pt} .recipe-card{box-shadow:none;border:none} }
 </style>
 <script type="application/ld+json" id="page-ld">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://cottagepierecipe.uk/terms-of-use/#webpage", "url": "https://cottagepierecipe.uk/terms-of-use/", "name": "Terms of Use | Printing & Reusing Cottage Pie Content", "description": "Printing a recipe, quoting a passage or using a photograph? Check the terms for personal use, content reuse and permissions at Cottage Pie Recipe.", "inLanguage": "en-GB", "isPartOf": {"@id": "https://cottagepierecipe.uk/#website"}, "author": {"@id": "https://cottagepierecipe.uk/about/#michael"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cottagepierecipe.uk/"}, {"@type": "ListItem", "position": 2, "name": "Terms of Use", "item": "https://cottagepierecipe.uk/terms-of-use/"}]}]}</script>
-<style>[id]{scroll-margin-top:100px}</style>
+<style>[id]{scroll-margin-top:100px}.faq-item>h2.faq-h{font-family:inherit;font-size:1.02rem;font-weight:700;line-height:1.4;margin:0;padding:0;border:0;letter-spacing:normal}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -242,10 +242,10 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 <h2>Accuracy and availability</h2><p>We work to keep content accurate and will correct confirmed errors, but the site is provided as it stands and may be unavailable from time to time for maintenance or reasons outside our control. Nothing in these terms removes any rights you have under UK consumer law.</p>
 <h2>Links, changes and governing law</h2><p>Third-party sites linked from here are governed by their own terms. These terms may be updated; the current version will always be on this page with its date. These terms are governed by the law of England and Wales, unless the law of another part of the United Kingdom applies to you as a consumer.</p>
 <h2>Questions about reusing content</h2>
-<div class="faq-item"><button aria-expanded="false">Can I keep a paper copy of a recipe for my own kitchen?<span class="chev">+</span></button><div class="ans"><p>Yes. A printed copy for your own use at home is exactly what the recipe page's recipe-only view is for.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Can I publish a recipe from this site on my own website or page?<span class="chev">+</span></button><div class="ans"><p>Not in full. You may quote a short extract with a clear credit and a link back to the page it came from. Republishing a full recipe, article or photograph, or using any of it commercially, needs written permission first.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">May I link to this website from my own site?<span class="chev">+</span></button><div class="ans"><p>Yes — linking to a page here is welcome and needs no permission. Link to the page itself rather than copying its content across, so your readers reach the current version, including any corrections.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Can I use a photograph from this site?<span class="chev">+</span></button><div class="ans"><p>Please do not reuse the photographs without written permission first. The terms above cover the site's photographs in the same way as its text and design.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Can I keep a paper copy of a recipe for my own kitchen?<span class="chev">+</span></button></h2><div class="ans"><p>Yes. A printed copy for your own use at home is exactly what the recipe page's recipe-only view is for.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Can I publish a recipe from this site on my own website or page?<span class="chev">+</span></button></h2><div class="ans"><p>Not in full. You may quote a short extract with a clear credit and a link back to the page it came from. Republishing a full recipe, article or photograph, or using any of it commercially, needs written permission first.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">May I link to this website from my own site?<span class="chev">+</span></button></h2><div class="ans"><p>Yes — linking to a page here is welcome and needs no permission. Link to the page itself rather than copying its content across, so your readers reach the current version, including any corrections.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Can I use a photograph from this site?<span class="chev">+</span></button></h2><div class="ans"><p>Please do not reuse the photographs without written permission first. The terms above cover the site's photographs in the same way as its text and design.</p></div></div>
 <p>More questions are answered on our <a href="/faqs/" data-nav>FAQs page</a>.</p>
 </div></section>
 
@@ -362,7 +362,7 @@ if(dish && matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced
 }
 
 /* ---- FAQ accordions ---- */
-document.querySelectorAll(".faq-item > button").forEach(function(b){ b.addEventListener("click",function(){ var item=b.parentElement; var open=item.classList.toggle("open"); b.setAttribute("aria-expanded",open?"true":"false"); b.querySelector(".chev").textContent=open?"–":"+"; }); });
+document.querySelectorAll(".faq-item > h2 > button").forEach(function(b){ b.addEventListener("click",function(){ var item=b.parentElement.parentElement; var open=item.classList.toggle("open"); b.setAttribute("aria-expanded",open?"true":"false"); b.querySelector(".chev").textContent=open?"–":"+"; }); });
 
 /* ---- Recipe interactions ---- */
 document.querySelectorAll("[data-ing] li input").forEach(function(cb){ cb.addEventListener("change",function(){ cb.closest("li").classList.toggle("checked",cb.checked); }); });
