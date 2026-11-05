@@ -193,7 +193,7 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 @media print{ header.site,footer.site,.dock,.cookiebar,.no-print,.hero-actions{display:none!important} .page{display:none!important} .page.active{display:block!important} body{background:#fff;font-size:12pt} .recipe-card{box-shadow:none;border:none} }
 </style>
 <script type="application/ld+json" id="page-ld">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://cottagepierecipe.uk/privacy-policy/#webpage", "url": "https://cottagepierecipe.uk/privacy-policy/", "name": "Privacy Policy | Cottage Pie Recipe", "description": "How Cottage Pie Recipe handles browser storage, hosting information and font requests, plus the personal information described in its privacy policy.", "inLanguage": "en-GB", "isPartOf": {"@id": "https://cottagepierecipe.uk/#website"}, "author": {"@id": "https://cottagepierecipe.uk/about/#michael"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cottagepierecipe.uk/"}, {"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://cottagepierecipe.uk/privacy-policy/"}]}]}</script>
-<style>[id]{scroll-margin-top:100px}</style>
+<style>[id]{scroll-margin-top:100px}.faq-item>h2.faq-h{font-family:inherit;font-size:1.02rem;font-weight:700;line-height:1.4;margin:0;padding:0;border:0;letter-spacing:normal}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -246,10 +246,10 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 <h2>Children, sharing and changes</h2><p>This website is aimed at adult home cooks and does not knowingly collect children's data. We do not sell personal data. We share data only with the service providers named above, for the purposes described. If this policy changes, the updated version will be published on this page with a new date.</p>
 <p class="help">This policy describes the arrangements above in plain language. It should be checked by a qualified adviser before the site trades or adds analytics or advertising.</p>
 <h2>Questions about your privacy</h2>
-<div class="faq-item"><button aria-expanded="false">Does this website track what I read or how long I stay?<span class="chev">+</span></button><div class="ans"><p>No. No analytics or advertising service is active on this website, and there are no accounts. Nothing about your browsing here is sent to us by the site itself.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Where are my cooking timers kept?<span class="chev">+</span></button><div class="ans"><p>In your own browser's local storage, on your own device. They are not sent to us, and clearing your browser data removes them.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">What happens to my details if I send the site an email?<span class="chev">+</span></button><div class="ans"><p>We receive your name, email address and message, as with any email. They are used only to reply to your enquiry and to correct or improve the page concerned.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Does the site sell personal data?<span class="chev">+</span></button><div class="ans"><p>No. Personal data is not sold, and it is shared only with the service providers named in the policy above, for the purposes described there.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Does this website track what I read or how long I stay?<span class="chev">+</span></button></h2><div class="ans"><p>No. No analytics or advertising service is active on this website, and there are no accounts. Nothing about your browsing here is sent to us by the site itself.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Where are my cooking timers kept?<span class="chev">+</span></button></h2><div class="ans"><p>In your own browser's local storage, on your own device. They are not sent to us, and clearing your browser data removes them.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">What happens to my details if I send the site an email?<span class="chev">+</span></button></h2><div class="ans"><p>We receive your name, email address and message, as with any email. They are used only to reply to your enquiry and to correct or improve the page concerned.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Does the site sell personal data?<span class="chev">+</span></button></h2><div class="ans"><p>No. Personal data is not sold, and it is shared only with the service providers named in the policy above, for the purposes described there.</p></div></div>
 <p>More questions are answered on our <a href="/faqs/" data-nav>FAQs page</a>.</p>
 </div></section>
 
@@ -366,7 +366,7 @@ if(dish && matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced
 }
 
 /* ---- FAQ accordions ---- */
-document.querySelectorAll(".faq-item > button").forEach(function(b){ b.addEventListener("click",function(){ var item=b.parentElement; var open=item.classList.toggle("open"); b.setAttribute("aria-expanded",open?"true":"false"); b.querySelector(".chev").textContent=open?"–":"+"; }); });
+document.querySelectorAll(".faq-item > h2 > button").forEach(function(b){ b.addEventListener("click",function(){ var item=b.parentElement.parentElement; var open=item.classList.toggle("open"); b.setAttribute("aria-expanded",open?"true":"false"); b.querySelector(".chev").textContent=open?"–":"+"; }); });
 
 /* ---- Recipe interactions ---- */
 document.querySelectorAll("[data-ing] li input").forEach(function(cb){ cb.addEventListener("change",function(){ cb.closest("li").classList.toggle("checked",cb.checked); }); });
