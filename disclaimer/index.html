@@ -193,7 +193,7 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 @media print{ header.site,footer.site,.dock,.cookiebar,.no-print,.hero-actions{display:none!important} .page{display:none!important} .page.active{display:block!important} body{background:#fff;font-size:12pt} .recipe-card{box-shadow:none;border:none} }
 </style>
 <script type="application/ld+json" id="page-ld">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://cottagepierecipe.uk/disclaimer/#webpage", "url": "https://cottagepierecipe.uk/disclaimer/", "name": "Cottage Pie Recipe Disclaimer | Testing & Substitutions", "description": "What recipe testing covers, how substitutions can change the result, and the limits of nutrition and food-safety information on Cottage Pie Recipe.", "inLanguage": "en-GB", "isPartOf": {"@id": "https://cottagepierecipe.uk/#website"}, "author": {"@id": "https://cottagepierecipe.uk/about/#michael"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://cottagepierecipe.uk/"}, {"@type": "ListItem", "position": 2, "name": "Disclaimer", "item": "https://cottagepierecipe.uk/disclaimer/"}]}]}</script>
-<style>[id]{scroll-margin-top:100px}</style>
+<style>[id]{scroll-margin-top:100px}.faq-item>h2.faq-h{font-family:inherit;font-size:1.02rem;font-weight:700;line-height:1.4;margin:0;padding:0;border:0;letter-spacing:normal}</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -243,10 +243,10 @@ body.printview .page[data-page="/cottage-pie-recipe/"] .wrap > *:not(.recipe-car
 <h2>Third-party links</h2><p>Links to other websites are provided for reference. We do not control their content and are not responsible for it. A link is not an endorsement of a product.</p>
 <h2>Affiliates and sponsorship</h2><p>There are no affiliate links or sponsored relationships on this website at present. If that changes, the affected pages will disclose it.</p>
 <h2>Questions about this disclaimer</h2>
-<div class="faq-item"><button aria-expanded="false">What does this disclaimer cover, in plain terms?<span class="chev">+</span></button><div class="ans"><p>Five things: that recipe results vary with your ingredients, equipment and oven; that untested content is labelled as such; that substitutions and dietary notes need care; that no nutrition figures are published without calculation; and that links to other websites are not endorsements.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Does the disclaimer mean an inaccurate instruction is not the site's problem?<span class="chev">+</span></button><div class="ans"><p>No. The disclaimer covers genuine variation in home cooking. It does not excuse an inaccurate or unsafe instruction — if you find one, please report it through the <a href="/contact/" data-nav>Contact page</a> so it can be corrected.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Why are there no nutrition figures on the recipes?<span class="chev">+</span></button><div class="ans"><p>Because none have been calculated for these exact formulations. Figures published for other recipes elsewhere do not apply here, and guessing at numbers would be worse than publishing none.</p></div></div>
-<div class="faq-item"><button aria-expanded="false">Are the dietary notes on this site a guarantee that a dish is safe for me?<span class="chev">+</span></button><div class="ans"><p>No. Ingredient formulations vary by brand and change over time. The pages flag what to check, but the label of the product you actually have is what decides — especially for allergens and gluten.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">What does this disclaimer cover, in plain terms?<span class="chev">+</span></button></h2><div class="ans"><p>Five things: that recipe results vary with your ingredients, equipment and oven; that untested content is labelled as such; that substitutions and dietary notes need care; that no nutrition figures are published without calculation; and that links to other websites are not endorsements.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Does the disclaimer mean an inaccurate instruction is not the site's problem?<span class="chev">+</span></button></h2><div class="ans"><p>No. The disclaimer covers genuine variation in home cooking. It does not excuse an inaccurate or unsafe instruction — if you find one, please report it through the <a href="/contact/" data-nav>Contact page</a> so it can be corrected.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Why are there no nutrition figures on the recipes?<span class="chev">+</span></button></h2><div class="ans"><p>Because none have been calculated for these exact formulations. Figures published for other recipes elsewhere do not apply here, and guessing at numbers would be worse than publishing none.</p></div></div>
+<div class="faq-item"><h2 class="faq-h"><button aria-expanded="false">Are the dietary notes on this site a guarantee that a dish is safe for me?<span class="chev">+</span></button></h2><div class="ans"><p>No. Ingredient formulations vary by brand and change over time. The pages flag what to check, but the label of the product you actually have is what decides — especially for allergens and gluten.</p></div></div>
 <p>More questions are answered on our <a href="/faqs/" data-nav>FAQs page</a>.</p>
 </div></section>
 
@@ -363,7 +363,7 @@ if(dish && matchMedia("(pointer:fine)").matches && !matchMedia("(prefers-reduced
 }
 
 /* ---- FAQ accordions ---- */
-document.querySelectorAll(".faq-item > button").forEach(function(b){ b.addEventListener("click",function(){ var item=b.parentElement; var open=item.classList.toggle("open"); b.setAttribute("aria-expanded",open?"true":"false"); b.querySelector(".chev").textContent=open?"–":"+"; }); });
+document.querySelectorAll(".faq-item > h2 > button").forEach(function(b){ b.addEventListener("click",function(){ var item=b.parentElement.parentElement; var open=item.classList.toggle("open"); b.setAttribute("aria-expanded",open?"true":"false"); b.querySelector(".chev").textContent=open?"–":"+"; }); });
 
 /* ---- Recipe interactions ---- */
 document.querySelectorAll("[data-ing] li input").forEach(function(cb){ cb.addEventListener("change",function(){ cb.closest("li").classList.toggle("checked",cb.checked); }); });
